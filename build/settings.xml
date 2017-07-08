@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Settings autocheck="true" autostart="true" interval="2000">
-  <UpdateInfo description="Newtt" key="b044e333-db2a-4f33-a854-6a33785670c0">
+  <UpdateInfo description="Test" key="b044e333-db2a-4f33-a854-6a33785670c0">
     <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\drag-and-drop-list-item-in-list-view-master</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test2</ExternalPath>
+      <LocalPath>C:\Users\Chris\Desktop\Avenged_Sevenfold--Hail_to_the_King-REPACK-2013-OMA</LocalPath>
+      <ExternalPath>test2</ExternalPath>
     </PathInfo>
   </UpdateInfo>
 </Settings>

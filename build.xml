@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project usbupdater">
+<project default="create_run_jar" name="Create Runnable Jar for Project usbupdater with Jar-in-Jar Loader">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
-    <!--define folder properties-->
-    <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="${dir.buildfile}/.."/>
-    <property name="dir.jarfile" value="${dir.buildfile}/build"/>
     <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/updater.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="E:/Entwicklung/usbupdater/build/updater.jar">
             <manifest>
-                <attribute name="Main-Class" value="de.chris.usbupdater.start.Start"/>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="de.chris.usbupdater.start.Start"/>
                 <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ slf4j-api-1.7.5.jar slf4j-log4j12-1.7.5.jar log4j-1.2.17.jar"/>
             </manifest>
-            <fileset dir="${dir.buildfile}/target/classes"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/SA_Admin/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/SA_Admin/.m2/repository/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Users/SA_Admin/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="E:/Entwicklung/usbupdater/target/classes"/>
+            <zipfileset dir="C:\Users\Chris\.m2\repository\org\slf4j\slf4j-api\1.7.5" includes="slf4j-api-1.7.5.jar"/>
+            <zipfileset dir="C:\Users\Chris\.m2\repository\org\slf4j\slf4j-log4j12\1.7.5" includes="slf4j-log4j12-1.7.5.jar"/>
+            <zipfileset dir="C:\Users\Chris\.m2\repository\log4j\log4j\1.2.17" includes="log4j-1.2.17.jar"/>
         </jar>
     </target>
 </project>

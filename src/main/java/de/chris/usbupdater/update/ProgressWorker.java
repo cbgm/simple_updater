@@ -66,7 +66,7 @@ public class ProgressWorker extends SwingWorker<Void, String> implements CopyLis
 						publish(this.filesCount + " files");
 						this.copyUtil.copyFolder(new File(p.getLocalPath()), new File(this.drive.getValue() + p.getExternalPath()));
 					} catch (Exception e) {
-
+						e.printStackTrace();
 						JOptionPane.showMessageDialog(this.dialog,
 							    e.getMessage(),
 							    "Error when transfering definition " + currentDefinition,
@@ -76,8 +76,8 @@ public class ProgressWorker extends SwingWorker<Void, String> implements CopyLis
 					reset();
 				}			
 			}
-		} catch (Exception ex) {
-			System.err.println(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return null;

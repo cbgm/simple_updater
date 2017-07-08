@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Settings autocheck="false" autostart="false" interval="2000">
-  <UpdateInfo description="New" key=""/>
-  <UpdateInfo description="New" key=""/>
-  <UpdateInfo description="New" key="">
+<Settings autocheck="true" autostart="false" interval="2000">
+  <UpdateInfo description="New" key="867d307b-ae31-4884-a7bf-3fb671111730">
     <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\drag-and-drop-list-item-in-list-view-master</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test2</ExternalPath>
-    </PathInfo>
-  </UpdateInfo>
-  <UpdateInfo description="Newredfgdf" key="98049ed9-106f-4d1c-aa02-f5d53ecf9536">
-    <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\Neuer Ordner</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test</ExternalPath>
-    </PathInfo>
-    <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\drag-and-drop-list-item-in-list-view-master</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test</ExternalPath>
-    </PathInfo>
-    <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\sonarqube-6.2</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test</ExternalPath>
-    </PathInfo>
-    <PathInfo>
-      <LocalPath>C:\Users\SA_Admin\Desktop\DragNDrop</LocalPath>
-      <ExternalPath>Users\SA_Admin\Desktop\test</ExternalPath>
+      <LocalPath>C:\Users\Chris\Desktop\Avenged_Sevenfold--Hail_to_the_King-REPACK-2013-OMA</LocalPath>
+      <ExternalPath>test</ExternalPath>
     </PathInfo>
   </UpdateInfo>
 </Settings>

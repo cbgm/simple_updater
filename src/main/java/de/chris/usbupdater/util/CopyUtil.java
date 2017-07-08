@@ -1,5 +1,6 @@
 package de.chris.usbupdater.util;
 
+import java.awt.image.ReplicateScaleFilter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -60,15 +62,23 @@ public class CopyUtil {
 //	}
 	
 	public List<String> CompareOldAndNew(final File src, final File dest) {
-		List<String> comparedNonExistingPaths = null;
+		List<String> comparedNonExistingPaths = new ArrayList<>();//null;
+		String[] ar = src.toString().split("\\\\");
+		String mainFolder = ar[ar.length-1];
+		String unused = src.toString().split(mainFolder)[0];
 		
+				
 		try (Stream<Path> localstream = Files.walk(src.toPath());
 			Stream<Path> externalStream = Files.walk(dest.toPath())){
 			
-			List<String> existingPaths = localstream.map(path -> (dest.toPath().relativize(path)).toString().replaceAll("..\\\\", "\\\\")).collect(Collectors.toList());
-			List<String> localPaths = externalStream.map(path -> path.toString()).collect(Collectors.toList());
+//			List<String> existingPaths = localstream.map(path -> (dest.toPath().relativize(path)).toString().replaceAll("..\\\\", "\\\\")).collect(Collectors.toList());
+			List<String> existingPaths = localstream.map(path -> dest.toString().concat(path.toString().replaceFirst(unused.replaceAll("\\\\", "\\\\\\\\"), "\\\\"))).collect(Collectors.toList());
+	
+
+			List<String> externalPaths = externalStream.map(path -> path.toString()).collect(Collectors.toList());
+						
 			comparedNonExistingPaths = existingPaths.stream()
-					.filter(listEntry -> localPaths.stream()
+					.filter(listEntry -> externalPaths.stream()
 		                    .filter(checkedEntry -> !listEntry.contains(checkedEntry)).findFirst().orElse(null) == null)
 		            .collect(Collectors.toList());
 			
@@ -147,12 +157,16 @@ public class CopyUtil {
 	}
 	
 	public  void copyFolder(File src, File dest) throws IOException{
+		String[] ar = src.toString().split("\\\\");
+		String mainFolder = ar[ar.length-1];
     	
         try (Stream<Path> stream = Files.walk(src.toPath())) {
             stream.forEach(sourcePath -> {
-
-            	String correctedPath = (dest.toPath().resolve(dest.toPath().relativize(sourcePath))).toString();
-            	Path target = new File(correctedPath.replaceAll("\\\\..\\\\", "\\\\")).toPath();
+            	String unused = sourcePath.toString().split(mainFolder)[0];
+            	String toAdd = sourcePath.toString().replaceFirst(unused.replaceAll("\\\\", "\\\\\\\\"), "");
+            	String correctedPath = dest.toString().concat(File.separator + toAdd);
+            	Path target = new File(correctedPath).toPath();
+            	
             	
                 try {
                 	

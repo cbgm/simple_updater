@@ -57,10 +57,10 @@ public class DriveUtil {
 		
 		for(File drive : drives) {
 			
-			if(fsv.isDrive(drive) && new File(drive + "Users\\SA_Admin\\Desktop\\" + "key.txt").exists() && drive.canWrite()) {
+			if(fsv.isDrive(drive) && new File(drive + "key.txt").exists() && drive.canWrite()) {
 				
 				try {
-					List<String> lines= Files.readAllLines(Paths.get(drive.getAbsolutePath() + "Users\\SA_Admin\\Desktop\\" + "key.txt"));
+					List<String> lines= Files.readAllLines(Paths.get(drive.getAbsolutePath() + "key.txt"));
 				
 					if (lines.size() < 2) {
 						driveLetters.put(lines.get(0), drive.getAbsolutePath()); 
@@ -85,7 +85,7 @@ public class DriveUtil {
 	
 	public static void setDriveLastUpdated(final String driveLetter, final String key) {
 		
-		try (PrintWriter pw = new PrintWriter(new FileWriter(driveLetter + "Users\\SA_Admin\\Desktop\\" + "key.txt"));) {
+		try (PrintWriter pw = new PrintWriter(new FileWriter(driveLetter + "key.txt"));) {
 			pw.println(key);
 			pw.println(new Date().toString());
 		} catch (IOException e) {
@@ -97,7 +97,7 @@ public class DriveUtil {
 	
 	public static void perpareDrive(final String driveLetter, final String key) {
 		
-		try (PrintWriter pw = new PrintWriter(new FileWriter(driveLetter + "Users\\SA_Admin\\Desktop\\" + "key.txt"));) {
+		try (PrintWriter pw = new PrintWriter(new FileWriter(driveLetter + "key.txt"));) {
 			pw.println(key);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
